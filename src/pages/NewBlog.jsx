@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import api from '../api'
 
 function NewBlog() {
 
@@ -24,7 +25,7 @@ function NewBlog() {
         const localStorageData=JSON.parse(localStorage.getItem("loginCredentials"))
         const token=localStorageData.token
 
-        await axios.post("http://localhost:4000/newBlog",{newBlog},{
+        await api.post("/newBlog",{newBlog},{
             headers:{
                 Authorization:`Bearer ${token}`
             }
@@ -40,28 +41,98 @@ function NewBlog() {
         navigate("/")
 
     }
+
   return (
-    <div className='flex items-center justify-center h-[90vh]'>
-        <div className=' h-[70vh] pt-5  bg-cyan-200 w-[35vw] rounded-xl shadow-xl '>
-        <form className="max-w-sm mx-auto space-y-4 w-screen" onSubmit={creatingBlog}>
-          <div>
-              <label for="visitors" className="block mb-2.5 text-sm font-medium text-heading">Author</label>
-              <input type="text" id="visitors" className="bg-neutral-secondary-medium rounded-lg border border-gray-500 text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
-          </div>
-          <div>
-              <label for="visitors" className="block mb-2.5 text-sm font-medium text-heading">Title</label>
-              <input type="text" id="visitors" className="bg-neutral-secondary-medium rounded-lg border border-gray-500 text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
-          </div>
-          <div>
-              <label for="visitors" className="block mb-2.5 text-sm font-medium text-heading">Description</label>
-              <input type="text" id="visitors" className="bg-neutral-secondary-medium rounded-lg border border-gray-500 text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
-          </div>
-          <div>
-              <label for="visitors" className="block mb-2.5 text-sm font-medium text-heading">Body</label>
-              <textarea id="visitors" className="bg-neutral-secondary-medium rounded-lg border border-gray-500 text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required ></textarea>
-          </div>
-          <input type="submit" className="text-body text-white rounded-xl bg-gray-700 box-border border border-default-medium hover:bg-gray-900 cursor-pointer hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" value="Submit"></input>
-        </form>
+    <div className='min-h-screen bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-900 flex items-center justify-center px-4 py-10'>
+        
+        <div className='w-full max-w-2xl bg-slate-900 border border-cyan-800 rounded-3xl shadow-2xl shadow-cyan-500/10 px-6 sm:px-10 py-8'>
+            
+            <div className='mb-8 text-center'>
+                <h1 className='text-3xl font-bold tracking-wide text-cyan-300'>
+                    Create New Blog
+                </h1>
+
+                <p className='text-gray-400 text-sm mt-2'>
+                    Share your thoughts with the community
+                </p>
+            </div>
+
+            <form className="space-y-5 w-full" onSubmit={creatingBlog}>
+              
+              <div>
+                  <label
+                    htmlFor="visitors"
+                    className="block mb-2 text-sm font-medium text-cyan-200"
+                  >
+                    Author
+                  </label>
+
+                  <input
+                    type="text"
+                    id="visitors"
+                    className="w-full bg-slate-800 border border-cyan-800 text-white text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-400 transition-all duration-300"
+                    placeholder="Enter author name"
+                    required
+                  />
+              </div>
+
+              <div>
+                  <label
+                    htmlFor="visitors"
+                    className="block mb-2 text-sm font-medium text-cyan-200"
+                  >
+                    Title
+                  </label>
+
+                  <input
+                    type="text"
+                    id="visitors"
+                    className="w-full bg-slate-800 border border-cyan-800 text-white text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-400 transition-all duration-300"
+                    placeholder="Enter blog title"
+                    required
+                  />
+              </div>
+
+              <div>
+                  <label
+                    htmlFor="visitors"
+                    className="block mb-2 text-sm font-medium text-cyan-200"
+                  >
+                    Description
+                  </label>
+
+                  <input
+                    type="text"
+                    id="visitors"
+                    className="w-full bg-slate-800 border border-cyan-800 text-white text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-400 transition-all duration-300"
+                    placeholder="Short description"
+                    required
+                  />
+              </div>
+
+              <div>
+                  <label
+                    htmlFor="visitors"
+                    className="block mb-2 text-sm font-medium text-cyan-200"
+                  >
+                    Body
+                  </label>
+
+                  <textarea
+                    id="visitors"
+                    className="w-full min-h-[180px] resize-none bg-slate-800 border border-cyan-800 text-white text-sm rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-400 transition-all duration-300"
+                    placeholder="Write your blog content here..."
+                    required
+                  ></textarea>
+              </div>
+
+              <input
+                type="submit"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.01] shadow-lg hover:shadow-cyan-500/30"
+                value="Publish Blog"
+              ></input>
+
+            </form>
         </div>
     </div>
   )

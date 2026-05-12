@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import ProtectedLayout from './components/ProtectedLayout';
 import LoginProtectedLayout from './components/LoginProtectedLayout';
 import SignUp from './pages/SignUp';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -30,6 +31,18 @@ function App() {
             <Route path='/read-blog/:id' element={<ReadBlog/>}/>
           </Route>
         </Routes>
+        <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
       </BrowserRouter>
     </div>
       

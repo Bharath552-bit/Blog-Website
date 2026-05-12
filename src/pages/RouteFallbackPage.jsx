@@ -4,16 +4,35 @@ import { Link } from 'react-router-dom'
 function RouteFallbackPage() {
   return (
     <div>
-        <section class="bg-white dark:bg-gray-900">
-            <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                <div class="mx-auto max-w-screen-sm text-center">
-                    <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-primary-500">404</h1>
-                    <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">Something's missing.</p>
-                    <p class="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">Sorry, we can't find that page. You'll find lots to explore on the home page. </p>
-                    <Link to="/" class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4">Back to Homepage</Link>
-                </div>   
-            </div>
+        
+        <section className="min-h-screen bg-gradient-to-br from-slate-950 via-cyan-950 to-slate-900 flex items-center justify-center px-4">
+            
+            <div className="max-w-2xl text-center">
+                
+                <h1 className="text-[120px] sm:text-[160px] font-extrabold text-cyan-400 leading-none drop-shadow-lg">
+                    404
+                </h1>
+
+                <p className="mt-4 text-3xl sm:text-4xl font-bold text-white tracking-wide">
+                    Something's missing.
+                </p>
+
+                <p className="mt-5 text-gray-400 text-base sm:text-lg leading-8 max-w-xl mx-auto">
+                    Sorry, we can’t find that page. The page you are looking for might have been removed, renamed, or temporarily unavailable.
+                </p>
+
+                <div className='mt-10'>
+                    <Link
+                      to="/"
+                      className="inline-flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-7 py-3 rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105"
+                    >
+                      Back to Homepage
+                    </Link>
+                </div>
+
+            </div>   
         </section>
+
     </div>
   )
 }
